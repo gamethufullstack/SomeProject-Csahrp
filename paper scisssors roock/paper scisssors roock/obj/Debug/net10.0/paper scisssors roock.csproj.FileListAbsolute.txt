@@ -1,0 +1,14 @@
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\bin\Debug\net10.0\paper scisssors roock.exe
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\bin\Debug\net10.0\paper scisssors roock.deps.json
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\bin\Debug\net10.0\paper scisssors roock.runtimeconfig.json
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\bin\Debug\net10.0\paper scisssors roock.dll
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\bin\Debug\net10.0\paper scisssors roock.pdb
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\obj\Debug\net10.0\paper scisssors roock.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\obj\Debug\net10.0\paper scisssors roock.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\obj\Debug\net10.0\paper scisssors roock.AssemblyInfo.cs
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\obj\Debug\net10.0\paper scisssors roock.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\obj\Debug\net10.0\paper scisssors roock.dll
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\obj\Debug\net10.0\refint\paper scisssors roock.dll
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\obj\Debug\net10.0\paper scisssors roock.pdb
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\obj\Debug\net10.0\paper scisssors roock.genruntimeconfig.cache
+C:\Users\PC\Desktop\learn C#\app\paper scisssors roock\paper scisssors roock\obj\Debug\net10.0\ref\paper scisssors roock.dll
