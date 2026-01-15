@@ -1,15 +1,17 @@
-﻿class VocabularyLearningProgram
+class VocabularyLearningProgram
 {
     public static void Main()
     {
         VocabularyManager manager = new VocabularyManager();
         manager.LoadFromFile();
+        
         while (true)
         {
             Console.WriteLine("1.Add word");
             Console.WriteLine("2.show all words");
-            Console.WriteLine("3. review(random)");
-            Console.WriteLine("4.exit");
+            Console.WriteLine("3.Edit word or meaning");
+            Console.WriteLine("4.review(random)");
+            Console.WriteLine("5.exit");
 
             string choice = Console.ReadLine();
 
@@ -24,12 +26,14 @@
                     break;
 
                 case "3":
-                    manager.Review();
+                    manager.Edit();
                     break;
 
                 case "4":
+                    manager.Review();
+                    break;
+                case "5":
                     return;
-
                 default:
                     Console.WriteLine("Invalid choice");
                     break;
