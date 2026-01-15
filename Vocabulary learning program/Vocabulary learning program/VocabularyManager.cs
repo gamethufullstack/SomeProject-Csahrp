@@ -1,4 +1,4 @@
-﻿class VocabularyManager
+class VocabularyManager
 {
     List<Word> words = new List<Word>();
     private Random random = new Random();
@@ -49,12 +49,59 @@
         }
     }
 
+    public void Edit()
+    {
+        if (words.Count == 0)
+        {
+            Console.WriteLine("No word to edit");
+            return;
+        }
+
+        Console.Write("Enter word to edit:");
+        string input = Console.ReadLine();
+
+        /* Loop through words, find matching Text (ignore case), else w = null*/
+        Word w = words.FirstOrDefault(
+            x => x.Text.Equals(input, StringComparison.OrdinalIgnoreCase));
+        if (w == null)
+        {
+            Console.WriteLine("Word not found!");
+            return;
+        }
+
+        Console.WriteLine("1.Edit word");
+        Console.WriteLine("2.Edit meaning:");
+        string choice = Console.ReadLine();
+
+        if (choice == "1")
+        {
+            Console.Write("Enter new word:");
+            w.Text = Console.ReadLine();
+        }
+
+        else if (choice == "2")
+        {
+            Console.Write("Enter new meaning:");
+            w.Meaning = Console.ReadLine();
+        }
+
+        else
+        {
+            Console.WriteLine("Invalid choice");
+        }
+
+        SaveToFile();
+        Console.WriteLine("Updated successfully!");
+    }
+
     public void SaveToFile()
     {
-        using(StreamWriter writer = new StreamWriter("words.txt", true))
+        using(StreamWriter writer = new StreamWriter("words.txt"))
         {
-           Word w = words[words.Count - 1];
-           writer.WriteLine($"{w.Text}|{w.Meaning}");
+            foreach(var w in words)
+            {
+                writer.WriteLine($"{w.Text}|{w.Meaning}");
+            }
         }
     }
     public void LoadFromFile()
