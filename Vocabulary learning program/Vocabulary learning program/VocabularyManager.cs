@@ -11,7 +11,7 @@ class VocabularyManager
         words.Add(new Word { Text = text, Meaning = meaning });
         SaveToFile();
         Console.WriteLine("Word added!");
-    }
+    }   
 
     public void ShowWord()
     {
@@ -116,11 +116,14 @@ class VocabularyManager
         {
             string[] parts = line.Split('|');
             {
-                words.Add(new Word
+                if (parts.Length == 2)
                 {
-                    Text = parts[0],
-                    Meaning = parts[1]
-                });
+                    words.Add(new Word
+                    {
+                        Text = parts[0],
+                        Meaning = parts[1]
+                    });
+                }
             }
         }
     }
