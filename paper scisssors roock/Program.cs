@@ -1,49 +1,59 @@
+enum Choice
+{
+    Rock,
+    Paper,
+    Scissors,
+    Exit
+}
 class RPSGame
 {
-    static string GetPlayerchoice()
+    static void ShowMenu()
+    {
+        Console.WriteLine(" 1.Enter rock to choose rock");
+        Console.WriteLine(" 2.Enter paper to choose paper");
+        Console.WriteLine(" 3.Enter scissors to choose scissors");
+        Console.WriteLine("4. exit to exit");
+    }
+    static Choice GetPlayerchoice()
     {
         while (true)
         {
-            Console.WriteLine(" 1.Enter rock to choose rock");
-            Console.WriteLine(" 2.Enter paper to choose paper");
-            Console.WriteLine(" 3.Enter scissors to choose scissors");
-            Console.WriteLine("4. exit to exit");
-
+ 
             string input = Console.ReadLine().Trim().ToLower();
-
-            if (input == "exit")
+            switch (input)
             {
-                return "exit";
+                case "rock":
+                    return Choice.Rock;
+                case "paper":
+                    return Choice.Paper;
+                case "scissors":
+                    return Choice.Scissors;
+                case "exit":
+                    return Choice.Exit;
+                default:
+                    Console.WriteLine("Not valid, try again");
+                    break;
             }
 
-            if (input == "rock" || input == "paper" || input == "scissors")
-                return input;
-            Console.WriteLine("Not valid, try again");
         }
     }
 
-    static string GetcomputerChoice(Random rand)
+    static Choice GetcomputerChoice(Random rand)
     {
-        int value = rand.Next(1, 4);
-        switch (value)
-        {
-            case 1:return "rock";
-            case 2:return "paper";
-            case 3:return "scissors";
-            default:return "rock";
-        }
+        int value = rand.Next(0, 3);
+        return (Choice)value;
     }
 
-    static string GetResult(string player, string computer)
+    static string GetResult(Choice player, Choice computer)
     {
         if (player == computer)
         {
             return "Draw";
         }
 
-        if (player == "paper" && computer == "rock" ||
-            player == "rock" && computer == "scissors" ||
-            player == "scissors" && computer == "paper")
+        if (player == Choice.Paper && computer == Choice.Rock ||
+            player == Choice.Rock && computer == Choice.Scissors ||
+            player == Choice.Scissors && computer == Choice.Paper)
         {
             return "You win!";
         }
@@ -58,13 +68,14 @@ class RPSGame
 
         while (PlayAgain)
         {
-            string player = GetPlayerchoice();
-            if (player == "exit")
+            ShowMenu();
+            Choice player = GetPlayerchoice();
+            if (player == Choice.Exit)
             {
                 break;
             }
 
-            string computer = GetcomputerChoice(rand);
+            Choice computer = GetcomputerChoice(rand);
             Console.WriteLine($"Player: {player}");
             Console.WriteLine($"Computer:{computer}");
             string result = GetResult(player, computer);
