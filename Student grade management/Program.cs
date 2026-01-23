@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -227,6 +227,27 @@ class StudentService
         }
     }
 
+    public void SearchByName()
+    {
+        Console.Write("Enter name to search");
+        string input = Console.ReadLine();
+        Student student = null;
+        foreach(Student s in students)
+        {
+            if (s.Name.Equals(input, StringComparison.OrdinalIgnoreCase))
+            {
+                student = s;
+                break;
+            }
+        }
+        if (student == null)
+        {
+            Console.WriteLine("No student found");
+            return;
+        }
+        Console.WriteLine(student);
+    }
+
     public Grade GetGrade(double score)
     {
         if (score >= 9) return Grade.Excellent;
@@ -299,7 +320,6 @@ class Program
 {
     static void Menu(StudentService service)
     {
-        service = new StudentService();
         service.Load();
         Console.WriteLine("===Student grade management program===");
         while (true)
@@ -309,8 +329,9 @@ class Program
             Console.WriteLine("3.Show Max/Min score of Student");
             Console.WriteLine("4.Edit Student");
             Console.WriteLine("5.Delete student");
-            Console.WriteLine("6.Clasification of Student");
-            Console.WriteLine("7.exit to quit");
+            Console.WriteLine("6.Search student by name");
+            Console.WriteLine("7.Clasification of Student");
+            Console.WriteLine("8.exit to quit");
 
             Console.Write("choose option: ");
             string choice = Console.ReadLine();
@@ -345,12 +366,14 @@ class Program
                     service.Delete();
                     break;
                 case "6":
-                    service.ClassifyStudents();
+                    service.SearchByName();
                     break;
                 case "7":
-                    Console.WriteLine("Goodbye!");
+                    service.ClassifyStudents();
+                    break;
+                case "8":
+                    Console.WriteLine("GoodBye!");
                     return;
-
                 default:
                     Console.WriteLine("\nInvalid choice");
                     break;
