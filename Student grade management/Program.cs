@@ -84,7 +84,7 @@ class StudentService
     {
         if (!students.Any())
         {
-            Console.WriteLine("No data avaible.\n");
+            Console.WriteLine("No data available");
             return;
         }
 
@@ -131,27 +131,30 @@ class StudentService
         }
     }
 
+    private Student FindStudentByName(string name)
+    {
+        foreach (Student s in students)
+        {
+            if (s.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+            {
+                return s;
+            }
+        }
+        return null;
+    }
+
     public void Edit()
     {
         if (!students.Any())
         {
-            Console.WriteLine("No data avaible.\n");
+            Console.WriteLine("No data available");
             return;
         }
 
         Console.Write("Enter name to edit:");
         string input = Console.ReadLine();
 
-        // Find student by name (case-insensitive)
-        Student? student = null;
-        foreach(Student s in students)
-        {
-            if (s.Name.Equals(input, StringComparison.OrdinalIgnoreCase))
-            {
-                student = s;
-                break;
-            }
-        }
+        Student student = FindStudentByName(input);
 
         if (student == null)
         {
@@ -173,7 +176,7 @@ class StudentService
         {
             Console.Write("Enter new score: ");
             string scoreString = Console.ReadLine();
-            if (double.TryParse(input, out double newScore)
+            if (double.TryParse(scoreString, out double newScore)
                 && newScore >= 0 && newScore <= 10)
             {
                 student.Score = newScore;
@@ -203,17 +206,7 @@ class StudentService
             Console.Write("Enter name too delete:");
             string input = Console.ReadLine();
 
-            Student? student = null;
-
-            // Find student by name to delete
-            foreach (Student s in students)
-            {
-                if (s.Name.Equals(input, StringComparison.OrdinalIgnoreCase))
-                {
-                    student = s;
-                    break;
-                }
-            }
+            Student student = FindStudentByName(input);
 
             if (student == null)
             {
@@ -229,17 +222,14 @@ class StudentService
 
     public void SearchByName()
     {
+        if (!students.Any())
+        {
+            Console.WriteLine("No data available");
+            return;
+        }
         Console.Write("Enter name to search");
         string input = Console.ReadLine();
-        Student student = null;
-        foreach(Student s in students)
-        {
-            if (s.Name.Equals(input, StringComparison.OrdinalIgnoreCase))
-            {
-                student = s;
-                break;
-            }
-        }
+        Student student = FindStudentByName(input);
         if (student == null)
         {
             Console.WriteLine("No student found");
@@ -260,7 +250,7 @@ class StudentService
     {
         if (!students.Any())
         {
-            Console.WriteLine("No data avaible.\n");
+            Console.WriteLine("No data available");
             return;
         }
 
